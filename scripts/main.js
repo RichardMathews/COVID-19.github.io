@@ -1,13 +1,10 @@
-//Decalring the Different Variable and Objects
 let new_cases = document.getElementById("new_case");
 let new_death = document.getElementById("new_death");
 let total_death = document.getElementById("total_death");
 let total_recovered = document.getElementById("total_recovered");
 let total_cases = document.getElementById("total_cases");
 let table = document.getElementById('countries_stat')
-// Fetching the Data from the server
 
-//Fetching the World Data
 fetch("https://coronavirus-monitor.p.rapidapi.com/coronavirus/worldstat.php", {
     "method": "GET",
     "headers": {
@@ -27,7 +24,6 @@ fetch("https://coronavirus-monitor.p.rapidapi.com/coronavirus/worldstat.php", {
     console.log(err);
 });
 
-//Fetching The Case by Country Data
 fetch("https://coronavirus-monitor.p.rapidapi.com/coronavirus/cases_by_country.php", {
     "method": "GET",
     "headers": {
@@ -38,10 +34,10 @@ fetch("https://coronavirus-monitor.p.rapidapi.com/coronavirus/cases_by_country.p
 .then(response => response.json().then(data =>{
     console.log(data)
     let countries_stat = data.countries_stat;
-//Getting all the country statistic using a loop
+
     for(let i = 0; i<countries_stat.length;i++){
         console.log(countries_stat[i]);
-        //we will start by inserting the new rows inside our table
+
         let row = table.insertRow(i+1);
         let country_name = row.insertCell(0);
         let cases = row.insertCell(1);
